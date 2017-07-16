@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { 
   View, Text, TouchableOpacity, ScrollView
 } from 'react-native';
+import { connect } from 'react-redux';
 import RadioForm from 'react-native-simple-radio-button';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Styles from '../../assets/styles/Styles';
 import AccountStyle from '../../assets/styles/AccountStyle';
 import Init from '../../assets/Init';
+import Fetch from '../../api/Fetch';
 
 const { buttonMenu, touchBtnMenu } = Styles;
 const { mainBgColor } = Init;
@@ -27,6 +29,26 @@ class Account extends Component {
       price: null
     };
   }
+  componentDidMount() {
+    const { currentUser, dataUser } = this.props;
+    if(currentUser !== null && dataUser === null) {
+      const value = {
+        id: currentUser.idUser,
+        Action: 'getDataUser'
+      };
+      Fetch(value)
+      .then((response) => response.json())
+      .then((responseJson) => {
+        if (responseJson) { // ok
+          console.log(responseJson);
+          this.props.dispatch({ type: 'GET_DATA_USER', data: responseJson})
+        }
+      })
+      .catch(error => {
+          console.log(error);
+      });
+    }
+  }
   payProcess() {
     console.log(this.state.price);
   }
@@ -39,6 +61,7 @@ class Account extends Component {
       {label: '$9', value: 9 },
       {label: '$29', value: 29 }
     ];
+    const { dataUser } = this.props;
     return (
       <ScrollView>
         <View style={container}>
@@ -75,9 +98,9 @@ class Account extends Component {
           <View style={line} />
           <Text style={title}>- Account Info -</Text>
           <View style={{ paddingHorizontal: 10, marginTop: 7 }}>
-            <Text style={textStyle}>Name: </Text>
-            <Text style={textStyle}>Email: </Text>
-            <Text style={textStyle}>Phone: </Text>
+            <Text style={textStyle}>Name: {dataUser !== null ? dataUser.name : null}</Text>
+            <Text style={textStyle}>Email: {dataUser !== null ? dataUser.email : null}</Text>
+            <Text style={textStyle}>Phone: {dataUser !== null ? dataUser.phone : null}</Text>
           </View>
           <Text style={[label, {marginTop: 10}]}>Delete Account</Text>
           <View style={line} />
@@ -94,4 +117,12 @@ class Account extends Component {
     );
   }
 }
-export default Account;
+
+//function call sate from store
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser,
+    dataUser: state.dataUser
+  };
+}
+export default connect(mapStateToProps)(Account);

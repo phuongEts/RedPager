@@ -56,7 +56,6 @@ class Register extends Component {
         Fetch(value)
         .then((response) => response.json())
         .then((responseJson) => {
-          console.log(responseJson);
           if (!responseJson.code) { // error
             Alert.alert(
               'Opps!',

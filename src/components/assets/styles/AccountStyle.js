@@ -66,6 +66,30 @@ const Styles = StyleSheet.create({
     color: whiteColor,
     fontSize: mainFontSize,
     fontWeight: 'bold'
+  },
+  textFieldContainer: {
+    borderBottomWidth: 1,
+    borderBottomColor: menuBgColor,
+    flex: 3
+  },
+  sendContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 10
+  },
+  textField: {
+    height: 40,
+    color: colorTextGray
+  },
+  sendBtn: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 5,
+    backgroundColor: menuBgColor,
+    borderRadius: 5,
+    marginLeft: 5
   }
 });
 

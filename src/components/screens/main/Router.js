@@ -6,7 +6,9 @@ import Init from '../../../components/assets/Init';
 import HomeStack from '../home/HomeStack';
 import LoginStack from '../login/LoginStack';
 import AccountStack from '../account/AccountStack';
+import ConnectionsStack from '../connections/ConnectionsStack';
 import Menu from './Menu';
+import InviteStack from '../Invite/InviteStack';
 
 const { width, whiteColor } = Init;
 
@@ -19,6 +21,12 @@ export const SideMenu = DrawerNavigator({
     },
     Account: {
         screen: AccountStack
+    },
+    Connections: {
+        screen: ConnectionsStack
+    },
+    Invite: {
+        screen: InviteStack
     }
 },
     {

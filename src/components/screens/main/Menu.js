@@ -52,16 +52,16 @@ class Menu extends Component {
                             value={toggleApp}
                         />
                     </View>
-                    <TouchableOpacity style={menuItem} onPress={() => console.log('click menu')}>
+                    <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Home')}>
                         <Text style={textMenuItem}>Home</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={menuItem} onPress={() => console.log('click menu')}>
                         <Text style={textMenuItem}>Send</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={menuItem} onPress={() => console.log('click menu')}>
+                    <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Connections')}>
                         <Text style={textMenuItem}>My Connections</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={menuItem} onPress={() => console.log('click menu')}>
+                    <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Invite')}>
                         <Text style={textMenuItem}>Invite a user to Connect</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={menuItem} onPress={() => console.log('click menu')}>

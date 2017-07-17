@@ -6,6 +6,8 @@ import authorReducer from './authorReducer';
 import dataUserReducer from './dataUserReducer';
 import connectionReducer from './connectionReducer';
 import listPendingsReducer from './listPendingsReducer';
+import listInvitedReducer from './listInvitedReducer';
+import listPendingInviteReducer from './listPendingInviteReducer';
 
 const reducer = combineReducers({
     filterStatus: filterStatusReducer,
@@ -14,6 +16,8 @@ const reducer = combineReducers({
     currentUser: authorReducer,
     dataUser: dataUserReducer,
     connections: connectionReducer,
-    listPendings: listPendingsReducer
+    listPendings: listPendingsReducer,
+    listInvited: listInvitedReducer,
+    listPendingInvite: listPendingInviteReducer
 });
 export default reducer;

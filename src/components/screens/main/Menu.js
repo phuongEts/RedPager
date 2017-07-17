@@ -8,6 +8,7 @@ import Styles from '../../assets/styles/Styles';
 import btShare from '../../../img/bgBtnSendMenu.png';
 import shareIMGsource from '../../../img/icon_share.png';
 import Logout from './Logout';
+import Fetch from '../../api/Fetch';
 
 
 class Menu extends Component {
@@ -35,7 +36,7 @@ class Menu extends Component {
         }
     }
     render() {
-        const { navigation, toggleApp, currentUser } = this.props;
+        const { navigation, toggleApp, currentUser, listPendingInvite } = this.props;
         const {
             containerMenu, mainMenu, switchWrap, switchBtn, switchText, menuItem,
             textMenuItem, lineMenu, sendWrap, shareText, shareIMG, btnsend, bottomMenu,
@@ -64,10 +65,10 @@ class Menu extends Component {
                     <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Invite')}>
                         <Text style={textMenuItem}>Invite a user to Connect</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={menuItem} onPress={() => console.log('click menu')}>
-                        <Text style={textMenuItem}>Pending Invites(0)</Text>
+                    <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('PendingInvite')}>
+                        <Text style={textMenuItem}>Pending Invites ({listPendingInvite !== null ? listPendingInvite.length : 0})</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={menuItem} onPress={() => console.log('click menu')}>
+                    <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Pages')}>
                         <Text style={textMenuItem}>Pages</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Account')}>
@@ -115,7 +116,8 @@ class Menu extends Component {
 function mapStateToProps(state) {
   return {
     toggleApp: state.toggleApp,
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    listPendingInvite: state.listPendingInvite
   };
 }
 

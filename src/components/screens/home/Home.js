@@ -9,6 +9,7 @@ import Styles from '../../assets/styles/Styles';
 import logo from '../../../img/logo.png';
 import bgBtnSendMenu from '../../../img/bgBtnSendMenu.png';
 import shareImg from '../../../img/icon_share.png';
+import Fetch from '../../api/Fetch';
 
 const { touchBtnMenu, buttonMenu } = Styles;
 
@@ -26,6 +27,28 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+    }
+    componentDidMount() {
+        const { currentUser, listPendingInvite } = this.props;
+        
+        if( currentUser !== null ) {
+        const value = {
+            Action: 'getListPendingInvite',
+            idUser: currentUser.idUser
+        };
+        Fetch(value)
+        .then((response) => response.json())
+        .then((responseJson) => {
+            if (responseJson) { // ok
+                console.log(responseJson);
+                this.props.dispatch({ type: 'GET_LIST_PENDING_INVITE', data: responseJson});
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+        }
+
     }
     render() {
         const { container, logoStyle, logoContainer, sendBtn, sendBtnImg } = Styles;
@@ -72,7 +95,8 @@ class Home extends Component {
 function mapStateToProps(state) {
   return {
     toggleApp: state.toggleApp,
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    listPendingInvite: state.listPendingInvite
   };
 }
 export default connect(mapStateToProps)(Home);

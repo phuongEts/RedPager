@@ -9,6 +9,8 @@ import AccountStack from '../account/AccountStack';
 import ConnectionsStack from '../connections/ConnectionsStack';
 import Menu from './Menu';
 import InviteStack from '../Invite/InviteStack';
+import PendingInviteStack from '../pendingInvite/PendingInviteStack';
+import PagesStack from '../pages/PagesStack';
 
 const { width, whiteColor } = Init;
 
@@ -27,6 +29,12 @@ export const SideMenu = DrawerNavigator({
     },
     Invite: {
         screen: InviteStack
+    },
+    PendingInvite: {
+        screen: PendingInviteStack
+    },
+    Pages: {
+        screen: PagesStack
     }
 },
     {

@@ -44,7 +44,7 @@ class Pages extends Component {
           <View style={listLabel}>
             <Text style={title}>Name</Text>
             <View /><View />
-            <Text style={title}>Action</Text>
+            <Text style={title}>Date</Text>
           </View>
 
 
@@ -53,7 +53,7 @@ class Pages extends Component {
           <View style={listLabel}>
             <Text style={title}>Name</Text>
             <View /><View />
-            <Text style={title}>Action</Text>
+            <Text style={title}>Date</Text>
           </View>
         </View>
       </ScrollView>

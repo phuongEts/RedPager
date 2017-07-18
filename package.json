@@ -11,6 +11,7 @@
     "react-native": "0.45.1",
     "react-native-checkbox": "^1.1.0",
     "react-native-fcm": "^7.1.0",
+    "react-native-root-toast": "^1.1.2",
     "react-native-simple-radio-button": "^2.5.0-alpha.1",
     "react-native-sound": "^0.10.3",
     "react-native-vector-icons": "^4.2.0",

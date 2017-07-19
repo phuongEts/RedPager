@@ -4,6 +4,8 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
+import Toast from 'react-native-root-toast';
+
 import Styles from '../../assets/styles/Styles';
 import btShare from '../../../img/bgBtnSendMenu.png';
 import shareIMGsource from '../../../img/icon_share.png';
@@ -35,6 +37,33 @@ class Menu extends Component {
             navigation.navigate(name);
         }
     }
+    toggleAppProcees() {
+        //this.props.dispatch({ type: 'TOGGLE_APP' });
+        const { toggleApp, currentUser } = this.props;
+        const value = {
+            Action: 'changeToggleApp',
+            avaiable: !toggleApp,
+            idUser: currentUser.idUser
+        };
+        Fetch(value)
+        .then((response) => response.json())
+        .then((responseJson) => {
+            if (responseJson.code === 1) { // ok
+                this.props.dispatch({ type: 'TOGGLE_APP' });
+            }
+            Toast.show(responseJson.mess, {
+                duration: 1000,
+                position: Toast.positions.BOTTOM,
+                shadow: true,
+                animation: true,
+                hideOnPress: true,
+                delay: 0
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
     render() {
         const { navigation, toggleApp, currentUser, listPendingInvite } = this.props;
         const {
@@ -48,7 +77,7 @@ class Menu extends Component {
                     <View style={switchWrap}>
                         <Text style={switchText}>{toggleApp ? 'On' : 'Off'}</Text>
                         <Switch
-                            onValueChange={() => this.props.dispatch({ type: 'TOGGLE_APP' })}
+                            onValueChange={this.toggleAppProcees.bind(this)}
                             style={switchBtn}
                             value={toggleApp}
                         />
@@ -56,7 +85,7 @@ class Menu extends Component {
                     <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Home')}>
                         <Text style={textMenuItem}>Home</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={menuItem} onPress={() => console.log('click menu')}>
+                    <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Send')}>
                         <Text style={textMenuItem}>Send</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Connections')}>

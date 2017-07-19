@@ -11,6 +11,7 @@ import Menu from './Menu';
 import InviteStack from '../Invite/InviteStack';
 import PendingInviteStack from '../pendingInvite/PendingInviteStack';
 import PagesStack from '../pages/PagesStack';
+import SendStack from '../send/SendStack';
 
 const { width, whiteColor } = Init;
 
@@ -35,6 +36,9 @@ export const SideMenu = DrawerNavigator({
     },
     Pages: {
         screen: PagesStack
+    },
+    Send: {
+        screen: SendStack
     }
 },
     {

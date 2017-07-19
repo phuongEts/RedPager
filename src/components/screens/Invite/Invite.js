@@ -5,6 +5,7 @@ import {
 
 import { connect } from 'react-redux';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Toast from 'react-native-root-toast';
 
 import Styles from '../../assets/styles/Styles';
 import AccountStyle from '../../assets/styles/AccountStyle';
@@ -69,23 +70,16 @@ class Invite extends Component {
         if (responseJson) { // ok
           console.log(responseJson);
           if( responseJson.code === 1) {
-            Alert.alert(
-              'Success!',
-              responseJson.mess,
-              [
-                  { text: 'OK', onPress: () => console.log('OK Pressed!') },
-              ]
-            );
             this.props.dispatch({ type: 'UPDATE_LIST_INVITED', data: responseJson.listInvite});
-          } else {
-            Alert.alert(
-              'Opp!',
-              responseJson.mess,
-              [
-                  { text: 'OK', onPress: () => console.log('OK Pressed!') },
-              ]
-            );
           }
+          Toast.show(responseJson.mess, {
+            duration: 1000,
+            position: Toast.positions.BOTTOM,
+            shadow: true,
+            animation: true,
+            hideOnPress: true,
+            delay: 0
+          });
           this.setState({ isLoading: false });
         }
       })
@@ -94,13 +88,14 @@ class Invite extends Component {
         this.setState({ isLoading: false });
       });
     } else {
-      Alert.alert(
-        'Opps!',
-        'Phone or email not empty!',
-        [
-            { text: 'OK', onPress: () => console.log('OK Pressed!') },
-        ]
-      );
+      Toast.show('Phone or email not empty!', {
+        duration: 1000,
+        position: Toast.positions.BOTTOM,
+        shadow: true,
+        animation: true,
+        hideOnPress: true,
+        delay: 0
+      });
     }
   }
   renderListInvited(data) {

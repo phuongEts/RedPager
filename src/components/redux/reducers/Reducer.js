@@ -8,6 +8,7 @@ import connectionReducer from './connectionReducer';
 import listPendingsReducer from './listPendingsReducer';
 import listInvitedReducer from './listInvitedReducer';
 import listPendingInviteReducer from './listPendingInviteReducer';
+import listSendReducer from './listSendReducer';
 
 const reducer = combineReducers({
     filterStatus: filterStatusReducer,
@@ -18,6 +19,7 @@ const reducer = combineReducers({
     connections: connectionReducer,
     listPendings: listPendingsReducer,
     listInvited: listInvitedReducer,
-    listPendingInvite: listPendingInviteReducer
+    listPendingInvite: listPendingInviteReducer,
+    listSend: listSendReducer
 });
 export default reducer;

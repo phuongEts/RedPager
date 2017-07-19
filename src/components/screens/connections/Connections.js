@@ -134,6 +134,48 @@ class Connections extends Component {
       );
     }
   }
+  configUser() {
+    const { currentUser } = this.props;
+    if (this.state.id !== null) {
+      this.setState({ isLoading: true });
+      const value = {
+        Action: 'setConfigUser',
+        idUser: currentUser.idUser,
+        idUserConnect: this.state.id,
+        vibrate: this.state.Vibrate,
+        light: this.state.Light,
+        sound: this.state.Sound
+      };
+      Fetch(value)
+      .then((response) => response.json())
+      .then((responseJson) => {
+        if (responseJson) { // ok
+          console.log(responseJson);
+          const mess = '';
+          if(responseJson.code === 1) {
+            //success
+            mess = 'Config user success!';
+          } else {
+            mess = 'Error, try again!';
+          }
+          this.setState({ modalVisible: false });
+          Toast.show(mess, {
+            duration: 1000,
+            position: Toast.positions.BOTTOM,
+            shadow: true,
+            animation: true,
+            hideOnPress: true,
+            delay: 0
+          });
+        }
+        this.setState({ isLoading: false });
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({ isLoading: false });
+      });
+    }
+  }
   renderModal() {
     let contentModal = '';
     let titleModal = 'Modal';
@@ -191,8 +233,8 @@ class Connections extends Component {
             </View>
           </View>
           {this.state.isLoading ? <Loading animating /> : 
-            <TouchableOpacity style={addButton} onPress={this.editName.bind(this)}>
-              <Text style={addTextbtn}>ADD</Text>
+            <TouchableOpacity style={addButton} onPress={this.configUser.bind(this)}>
+              <Text style={addTextbtn}>SAVE</Text>
             </TouchableOpacity>
           }
         </View>

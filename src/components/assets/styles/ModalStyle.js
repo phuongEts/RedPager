@@ -20,7 +20,7 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ebebeb',
     padding: 10,
-    width: width - 40
+    width: width - 40,
   },
   titleModalContainer: {
     justifyContent: 'space-between',

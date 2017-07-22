@@ -4,17 +4,34 @@ import Init from '../Init';
 const { 
   FontSize16, menuBgColor, height, mainFontSize, 
   width, FontSize18, whiteColor, colorTitleGray, colorTextGray,
-  FontSize20
+  FontSize25
 } = Init;
 
 const Styles = StyleSheet.create({
   ConnectionsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    marginVertical: 3
   },
   btnFa: {
-    fontSize: FontSize20
+    fontSize: FontSize25
+  },
+  btnText: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  title: {
+    fontSize: FontSize16,
+    color: colorTitleGray
+  },
+  textPhone: {
+    color: colorTextGray,
+    fontSize: mainFontSize
+  },
+  checkBoxStyle: {
+    width: 20,
+    height: 20
   }
 });
 export default Styles;

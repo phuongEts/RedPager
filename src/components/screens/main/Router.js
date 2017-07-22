@@ -12,6 +12,7 @@ import InviteStack from '../Invite/InviteStack';
 import PendingInviteStack from '../pendingInvite/PendingInviteStack';
 import PagesStack from '../pages/PagesStack';
 import SendStack from '../send/SendStack';
+import ShareStack from '../share/ShareStack';
 
 const { width, whiteColor } = Init;
 
@@ -39,6 +40,9 @@ export const SideMenu = DrawerNavigator({
     },
     Send: {
         screen: SendStack
+    },
+    Share: {
+        screen: ShareStack
     }
 },
     {

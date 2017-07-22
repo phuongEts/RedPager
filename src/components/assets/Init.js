@@ -10,6 +10,7 @@ module.exports = {
     FontSize16: width > 767 ? 22 : 16,
     FontSize18: width > 767 ? 25 : 18,
     FontSize20: width > 767 ? 25 : 20,
+    FontSize25: 25,
     FontSize12: width > 767 ? 18 : 12,
     mainFontSize: width > 767 ? 20 : 14,
     mainColor: '#184e55',

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    View, Text, TouchableOpacity, ScrollView, Image, Switch, Modal
+    View, Text, TouchableOpacity, ScrollView, Image, Switch, Modal, AsyncStorage
 } from 'react-native';
 
 import { connect } from 'react-redux';
@@ -158,29 +158,43 @@ class Home extends Component {
                     <FontAwesome name='times' style={closebtn} />
                 </TouchableOpacity>
                 </View>
-
                 {contentModal}
-
             </View>
             </View>
         </Modal>
         );
     }
     toggleAppProcees() {
-        //this.props.dispatch({ type: 'TOGGLE_APP' });
         const { toggleApp, currentUser } = this.props;
-        const value = {
-            Action: 'changeToggleApp',
-            avaiable: !toggleApp,
-            idUser: currentUser.idUser
-        };
-        Fetch(value)
-        .then((response) => response.json())
-        .then((responseJson) => {
-            if (responseJson.code === 1) { // ok
-                this.props.dispatch({ type: 'TOGGLE_APP' });
-            }
-            Toast.show(responseJson.mess, {
+        if (currentUser !== null) {
+            const value = {
+                Action: 'changeToggleApp',
+                avaiable: !toggleApp,
+                idUser: currentUser.idUser
+            };
+            this.props.dispatch({ type: 'TOGGLE_APP' });
+            console.log(toggleApp);
+            Fetch(value)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                if (responseJson.code === 1) { // ok
+                    console.log(toggleApp);
+                    AsyncStorage.setItem('toggleApp', JSON.stringify(!toggleApp));
+                }
+                Toast.show(responseJson.mess, {
+                    duration: 1000,
+                    position: Toast.positions.BOTTOM,
+                    shadow: true,
+                    animation: true,
+                    hideOnPress: true,
+                    delay: 0
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        } else {
+            Toast.show('Not Login', {
                 duration: 1000,
                 position: Toast.positions.BOTTOM,
                 shadow: true,
@@ -188,10 +202,7 @@ class Home extends Component {
                 hideOnPress: true,
                 delay: 0
             });
-        })
-        .catch(error => {
-            console.log(error);
-        });
+        }
     }
     render() {
         const { container, logoStyle, logoContainer, sendBtn, sendBtnImg } = Styles;
@@ -199,7 +210,7 @@ class Home extends Component {
             switchWrap, switchBtn, switchText, sendContainer, textSendBtn,
             shareContainer,  imgShare, shareText
         } = Styles;
-        const { toggleApp, currentUser } = this.props;
+        const { toggleApp, currentUser, navigation } = this.props;
         return (
             <ScrollView style={container}>
                 <View style={logoContainer}>
@@ -223,7 +234,7 @@ class Home extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={shareContainer}>
-                    <TouchableOpacity style={shareContainer} onPress={() => console.log('sdjfhsd')}>
+                    <TouchableOpacity style={shareContainer} onPress={() => navigation.navigate('Share')}>
                         <Image style={imgShare} source={shareImg} />
                         <Text style={shareText} >Share</Text>
                         <Text style={shareText}>Tell a friend to download Red Pager</Text>

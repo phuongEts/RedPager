@@ -3,7 +3,10 @@ import { StyleSheet } from 'react-native';
 
 import Init from '../Init';
 
-const { FontSize16, menuBgColor, height, mainFontSize, width, FontSize18, whiteColor } = Init;
+const { 
+    FontSize16, menuBgColor, height, mainFontSize, width, FontSize18, whiteColor,
+    colorTextGray, FontSize20
+} = Init;
 
 const Styles = StyleSheet.create({
     /** style menu **/
@@ -17,7 +20,7 @@ const Styles = StyleSheet.create({
         marginTop: 50,
     },
     buttonMenu: {
-        fontSize: FontSize18,
+        fontSize: FontSize20,
         color: whiteColor
     },
     touchBtnMenu: {
@@ -40,11 +43,17 @@ const Styles = StyleSheet.create({
         marginVertical: 3,
         paddingVertical: 7
     },
+    menuItemActive: {
+        backgroundColor: colorTextGray
+    },
     textMenuItem: {
         color: menuBgColor,
         fontWeight: 'bold',
         fontSize: mainFontSize,
         marginHorizontal: 15
+    },
+    textMenuItemActive: {
+        color: whiteColor
     },
     lineMenu: {
         borderTopWidth: 1,

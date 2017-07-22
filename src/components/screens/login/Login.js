@@ -113,6 +113,7 @@ class Login extends Component {
         this.props.dispatch({ type: 'SET_TOGGLE_APP', isOn: data.avaiable });
         this.props.dispatch({ type: 'LOGIN', user: data });
         AsyncStorage.setItem('current_user', JSON.stringify(data));
+        AsyncStorage.setItem('toggleApp', JSON.stringify(data.avaiable));
         this.props.navigation.navigate('Home');
     }
      render() {

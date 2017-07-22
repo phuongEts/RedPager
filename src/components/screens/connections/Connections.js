@@ -340,18 +340,6 @@ class Connections extends Component {
             animation: true,
             hideOnPress: true,
             delay: 0,
-            onShow: () => {
-                // calls on toast\`s appear animation start
-            },
-            onShown: () => {
-                // calls on toast\`s appear animation end.
-            },
-            onHide: () => {
-                // calls on toast\`s hide animation start.
-            },
-            onHidden: () => {
-                // calls on toast\`s hide animation end.
-            }
           });
         }
       })
@@ -366,9 +354,9 @@ class Connections extends Component {
       const arrayRender = [];
       const {
         btnEdit, btnFa, btnText, checkBoxStyle, ConnectionsContainer,
-        checkBoxContainer
+        checkBoxContainer, title, textPhone
       } = ConnectionsStyle;
-      const { container, label, line, title } = AccountStyle;
+      const { container, label, line } = AccountStyle;
       data.map((item, i) => arrayRender.push(
         <View style={ConnectionsContainer} key={i}>
           <TouchableOpacity onPress={() => this.openmodal('edit', item.id, item.name)} style={btnEdit} >
@@ -376,9 +364,9 @@ class Connections extends Component {
           </TouchableOpacity>
           <TouchableOpacity style={btnText} onPress={() => this.openmodal('config', item.id, item.name)}>
             <Text style={title}>{item.name}</Text>
+            <Text style={textPhone}>{item.phoneFormat}</Text>
           </TouchableOpacity>
           <CheckBox
-            style={checkBoxStyle}
             label=''
             checkedImage={checkedImageUrl}
             uncheckedImage={uncheckedImageUrl}
@@ -395,8 +383,7 @@ class Connections extends Component {
   renderPendings(data) {
     if(data !== null && data !== '') {
       const arrayRender = [];
-      const { ConnectionsContainer } = ConnectionsStyle;
-      const { title } = AccountStyle;
+      const { ConnectionsContainer, title } = ConnectionsStyle;
       data.map((item, i) => arrayRender.push(
         <View style={ConnectionsContainer} key={i}>
           <Text style={title}>{item.name}</Text>

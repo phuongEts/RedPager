@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { 
-    View, Text, TouchableOpacity, Switch, Image, AsyncStorage
+    View, Text, TouchableOpacity, Switch, Image, AsyncStorage, Alert
 } from 'react-native';
 
 import { connect } from 'react-redux';
@@ -16,12 +16,13 @@ import Fetch from '../../api/Fetch';
 class Menu extends Component {
     logOut() {
         Logout().then(() => {
-            this.props.dispatch({ type: 'LOGOUT' });
             this.props.dispatch({ type: 'SET_TOGGLE_APP', isOn: false });
+            this.props.dispatch({ type: 'LOGOUT' });
         })
     }
     clickItemMenu(name) {
         const { currentUser, navigation } = this.props; 
+        this.props.dispatch({ type: 'SET_ACTIVE_MENU', data: name });
         if (currentUser === null) {
             Alert.alert(
               'You are not sign in',
@@ -38,20 +39,34 @@ class Menu extends Component {
         }
     }
     toggleAppProcees() {
-        //this.props.dispatch({ type: 'TOGGLE_APP' });
         const { toggleApp, currentUser } = this.props;
-        const value = {
-            Action: 'changeToggleApp',
-            avaiable: !toggleApp,
-            idUser: currentUser.idUser
-        };
-        Fetch(value)
-        .then((response) => response.json())
-        .then((responseJson) => {
-            if (responseJson.code === 1) { // ok
-                this.props.dispatch({ type: 'TOGGLE_APP' });
-            }
-            Toast.show(responseJson.mess, {
+        if (currentUser !== null) {
+            const value = {
+                Action: 'changeToggleApp',
+                avaiable: !toggleApp,
+                idUser: currentUser.idUser
+            };
+            this.props.dispatch({ type: 'TOGGLE_APP' });
+            Fetch(value)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                if (responseJson.code === 1) { // ok
+                    AsyncStorage.setItem('toggleApp', JSON.stringify(!toggleApp));
+                }
+                Toast.show(responseJson.mess, {
+                    duration: 1000,
+                    position: Toast.positions.BOTTOM,
+                    shadow: true,
+                    animation: true,
+                    hideOnPress: true,
+                    delay: 0
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        } else {
+            Toast.show('Not Login', {
                 duration: 1000,
                 position: Toast.positions.BOTTOM,
                 shadow: true,
@@ -59,17 +74,14 @@ class Menu extends Component {
                 hideOnPress: true,
                 delay: 0
             });
-        })
-        .catch(error => {
-            console.log(error);
-        });
+        }
     }
     render() {
-        const { navigation, toggleApp, currentUser, listPendingInvite } = this.props;
+        const { navigation, toggleApp, currentUser, listPendingInvite, activeMenu } = this.props;
         const {
             containerMenu, mainMenu, switchWrap, switchBtn, switchText, menuItem,
             textMenuItem, lineMenu, sendWrap, shareText, shareIMG, btnsend, bottomMenu,
-            btnsendText
+            btnsendText, menuItemActive, textMenuItemActive
         } = Styles;
         return (
             <View style={containerMenu}>
@@ -82,54 +94,64 @@ class Menu extends Component {
                             value={toggleApp}
                         />
                     </View>
-                    <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Home')}>
-                        <Text style={textMenuItem}>Home</Text>
+                    <TouchableOpacity style={[menuItem, activeMenu === 'Home' ? menuItemActive : null]} onPress={() => this.clickItemMenu('Home')}>
+                        <Text style={[textMenuItem, activeMenu === 'Home' ? textMenuItemActive : null]}>Home</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Send')}>
-                        <Text style={textMenuItem}>Send</Text>
+                    <TouchableOpacity style={[menuItem, activeMenu === 'Send' ? menuItemActive : null]} onPress={() => this.clickItemMenu('Send')}>
+                        <Text style={[textMenuItem, activeMenu === 'Send' ? textMenuItemActive : null]}>Send</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Connections')}>
-                        <Text style={textMenuItem}>My Connections</Text>
+                    <TouchableOpacity style={[menuItem, activeMenu === 'Connections' ? menuItemActive : null]} onPress={() => this.clickItemMenu('Connections')}>
+                        <Text style={[textMenuItem, activeMenu === 'Connections' ? textMenuItemActive : null]}>My Connections</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Invite')}>
-                        <Text style={textMenuItem}>Invite a user to Connect</Text>
+                    <TouchableOpacity style={[menuItem, activeMenu === 'Invite' ? menuItemActive : null]} onPress={() => this.clickItemMenu('Invite')}>
+                        <Text style={[textMenuItem, activeMenu === 'Invite' ? textMenuItemActive : null]}>Invite a user to Connect</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('PendingInvite')}>
-                        <Text style={textMenuItem}>Pending Invites ({listPendingInvite !== null ? listPendingInvite.length : 0})</Text>
+                    <TouchableOpacity style={[menuItem, activeMenu === 'PendingInvite' ? menuItemActive : null]} onPress={() => this.clickItemMenu('PendingInvite')}>
+                        <Text style={[textMenuItem, activeMenu === 'PendingInvite' ? textMenuItemActive : null]}>Pending Invites ({listPendingInvite !== null ? listPendingInvite.length : 0})</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Pages')}>
-                        <Text style={textMenuItem}>Pages</Text>
+                    <TouchableOpacity style={[menuItem, activeMenu === 'Pages' ? menuItemActive : null]} onPress={() => this.clickItemMenu('Pages')}>
+                        <Text style={[textMenuItem, activeMenu === 'Pages' ? textMenuItemActive : null]}>Pages</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={menuItem} onPress={() => this.clickItemMenu('Account')}>
-                        <Text style={textMenuItem}>Account</Text>
+                    <TouchableOpacity style={[menuItem, activeMenu === 'Account' ? menuItemActive : null]} onPress={() => this.clickItemMenu('Account')}>
+                        <Text style={[textMenuItem, activeMenu === 'Account' ? textMenuItemActive : null]}>Account</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={menuItem} onPress={() => console.log('click menu')}>
-                        <Text style={textMenuItem}>Tell a friend to download Red Pager</Text>
+                    <TouchableOpacity style={[menuItem, activeMenu === 'Share' ? menuItemActive : null]} 
+                        onPress={() => {
+                            navigation.navigate('Share');
+                            this.props.dispatch({ type: 'SET_ACTIVE_MENU', data: 'Share' });
+                        }}
+                    >
+                        <Text style={[textMenuItem, activeMenu === 'Share' ? textMenuItemActive : null]}>Tell a friend to download Red Pager</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={menuItem} onPress={() => console.log('click menu')}>
-                        <Text style={textMenuItem}>FAQ</Text>
+                    <TouchableOpacity style={[menuItem, activeMenu === 'FAQ' ? menuItemActive : null]} onPress={() => console.log('click menu')}>
+                        <Text style={[textMenuItem, activeMenu === 'FAQ' ? textMenuItemActive : null]}>FAQ</Text>
                     </TouchableOpacity>
                     {currentUser !== null ? 
-                        <TouchableOpacity style={menuItem} onPress={this.logOut.bind(this)}>
-                            <Text style={textMenuItem}>Logout</Text>
+                        <TouchableOpacity style={[menuItem, activeMenu === 'Login' ? menuItemActive : null]} onPress={this.logOut.bind(this)}>
+                            <Text style={[textMenuItem, activeMenu === 'Login' ? textMenuItemActive : null]}>Logout</Text>
                         </TouchableOpacity>
                         
                     :
-                        <TouchableOpacity style={menuItem} onPress={() => navigation.navigate('Login')}>
-                            <Text style={textMenuItem}>Login</Text>
+                        <TouchableOpacity style={[menuItem, activeMenu === 'Login' ? menuItemActive : null]} onPress={() => navigation.navigate('Login')}>
+                            <Text style={[textMenuItem, activeMenu === 'Login' ? textMenuItemActive : null]}>Login</Text>
                         </TouchableOpacity>
                     }
                     <View style={lineMenu} />
                     <View style={bottomMenu}>
                         <View style={sendWrap}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => this.clickItemMenu('Send')}>
                                 <Image style={btnsend} source={btShare} >
                                 <Text style={btnsendText}>Send</Text>
                                 </Image>
                             </TouchableOpacity>
                         </View>
                         <View style={sendWrap}>
-                            <TouchableOpacity>
+                            <TouchableOpacity 
+                                onPress={() => {
+                                    navigation.navigate('Share');
+                                    this.props.dispatch({ type: 'SET_ACTIVE_MENU', data: 'Share' });
+                                }}
+                            >
                                 <Image style={shareIMG} source={shareIMGsource} />
                                 <Text style={shareText}>Share</Text>
                             </TouchableOpacity>
@@ -146,7 +168,8 @@ function mapStateToProps(state) {
   return {
     toggleApp: state.toggleApp,
     currentUser: state.currentUser,
-    listPendingInvite: state.listPendingInvite
+    listPendingInvite: state.listPendingInvite,
+    activeMenu: state.activeMenu
   };
 }
 

@@ -116,6 +116,10 @@ class Login extends Component {
         AsyncStorage.setItem('toggleApp', JSON.stringify(data.avaiable));
         this.props.navigation.navigate('Home');
     }
+    forgotPass() {
+        console.log('forgot password');
+        this.props.navigation.navigate('Screen_ForgotPassStep1');
+    }
      render() {
         const { navigation, isLoading } = this.props;
         const {
@@ -178,8 +182,10 @@ class Login extends Component {
                             </TouchableOpacity>
                             }
                         </View>
-                        <View>
-                            <Text>Forgot your password?</Text>
+                        <View style={{ marginTop: 20 }}>
+                            <TouchableOpacity onPress={this.forgotPass.bind(this)}>
+                                <Text>Forgot your password?</Text>
+                            </TouchableOpacity>
                         </View>
 
                     </View>

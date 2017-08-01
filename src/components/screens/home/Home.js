@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    View, Text, TouchableOpacity, ScrollView, Image, Switch, Modal, AsyncStorage
+    View, Text, TouchableOpacity, ScrollView, Image, Switch, Modal, AsyncStorage, Vibration
 } from 'react-native';
 
 import { connect } from 'react-redux';
@@ -227,7 +227,10 @@ class Home extends Component {
                     </View>
                 </View>
                 <View style={sendContainer}>
-                    <TouchableOpacity onPress={this.openListSend.bind(this)}>
+                    <TouchableOpacity 
+                        //onPress={this.openListSend.bind(this)}
+                        onPress={() => Vibration.vibrate([0, 5000, 200, 0])}
+                    >
                         <Image style={sendBtnImg} source={bgBtnSendMenu}>
                             <Text style={textSendBtn}>Send Red Page</Text>
                         </Image>

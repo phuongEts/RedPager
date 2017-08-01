@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
 
 import { connect } from 'react-redux';
 import Contacts from 'react-native-contacts';
@@ -6,6 +7,7 @@ import { SideMenu } from './Router';
 import GetCurrentUser from '../../api/GetCurrentUser';
 import GetToggleApp from '../../api/GetToggleApp';
 import Fetch from '../../api/Fetch';
+//import PushController from '../../api/PushController';
 
 
 class Main extends Component {

@@ -45,6 +45,7 @@ function ping() {
       mySound.play();
     }
   });
+  console.log('check worker!');
   setTimeout(ping, 10000);
 }
 

@@ -13,7 +13,6 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* RedPagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RedPagerTests.m */; };
-		092744631721474892EB5F03 /* libWorkers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BDD93A0BEE48A48075EE73 /* libWorkers.a */; };
 		0BD681F20A3C4FA5834C4118 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D52188A9E484553A6452E82 /* Foundation.ttf */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
@@ -30,8 +29,10 @@
 		2142B5821F1F3E4C00309520 /* MFLReactNativePayPal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2142B5811F1F3E4C00309520 /* MFLReactNativePayPal.m */; };
 		2142B5841F1F417700309520 /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2142B5831F1F417700309520 /* libPayPalMobile.a */; };
 		215525401F146A4900E8165A /* OMFG-Hello-OMFG.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2155253F1F146A4900E8165A /* OMFG-Hello-OMFG.mp3 */; };
-		215525421F146D0D00E8165A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 215525411F146D0D00E8165A /* GoogleService-Info.plist */; };
 		215525441F1478BF00E8165A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215525431F1478BF00E8165A /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		21858BD71F2C27C7009DC32F /* libRNControlFlashlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21858BD41F2C27A0009DC32F /* libRNControlFlashlight.a */; };
+		21E7B46C1F2B167300CCEEAA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21E7B46B1F2B167300CCEEAA /* GoogleService-Info.plist */; };
+		21E7B46E1F2B241400CCEEAA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21E7B46D1F2B241400CCEEAA /* AudioToolbox.framework */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -139,6 +140,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
 			remoteInfo = RNVectorIcons;
+		};
+		21858BD31F2C27A0009DC32F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21858BCE1F2C27A0009DC32F /* RNControlFlashlight.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DF064BED1B9CF99C00FD9B52;
+			remoteInfo = RNControlFlashlight;
+		};
+		21858BD51F2C27A0009DC32F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21858BCE1F2C27A0009DC32F /* RNControlFlashlight.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DF064BF81B9CF99D00FD9B52;
+			remoteInfo = RNControlFlashlightTests;
 		};
 		2198F7771F1F576A00170775 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -287,13 +302,6 @@
 			remoteGlobalIDString = 139D7E881E25C6D100323FB7;
 			remoteInfo = "double-conversion";
 		};
-		84EDDE2F1F0B72270055BE9B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0D3E52D2CA594EBEA5BEB7E1 /* Workers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9F97656B1CDC87F00091EE06;
-			remoteInfo = Workers;
-		};
 		84EDDE341F0B72270055BE9B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C635A56764754CACB2DC5DFE /* RNFIRMessaging.xcodeproj */;
@@ -314,7 +322,6 @@
 		00E356EE1AD99517003FC87E /* RedPagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedPagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* RedPagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedPagerTests.m; sourceTree = "<group>"; };
-		0D3E52D2CA594EBEA5BEB7E1 /* Workers.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = Workers.xcodeproj; path = "../node_modules/react-native-workers/ios/Workers.xcodeproj"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* RedPager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedPager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -325,7 +332,6 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RedPager/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RedPager/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		20BDD93A0BEE48A48075EE73 /* libWorkers.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libWorkers.a; sourceTree = "<group>"; };
 		2108D5111F0F7C8D003FD4C8 /* advertising.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = advertising.mp3; sourceTree = "<group>"; };
 		2142B55D1F1F3DC500309520 /* CardIO */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CardIO; sourceTree = "<group>"; };
 		2142B55E1F1F3DC500309520 /* PayPalMobile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PayPalMobile; sourceTree = "<group>"; };
@@ -333,8 +339,10 @@
 		2142B5811F1F3E4C00309520 /* MFLReactNativePayPal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFLReactNativePayPal.m; path = "../node_modules/react-native-paypal/ios/MFLReactNativePayPal/MFLReactNativePayPal.m"; sourceTree = "<group>"; };
 		2142B5831F1F417700309520 /* libPayPalMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPayPalMobile.a; path = "../node_modules/react-native-paypal/ios/lib/Paypal/PayPalMobile/libPayPalMobile.a"; sourceTree = "<group>"; };
 		2155253F1F146A4900E8165A /* OMFG-Hello-OMFG.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "OMFG-Hello-OMFG.mp3"; path = "../../../OMFG-Hello-OMFG.mp3"; sourceTree = "<group>"; };
-		215525411F146D0D00E8165A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		215525431F1478BF00E8165A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		21858BCE1F2C27A0009DC32F /* RNControlFlashlight.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNControlFlashlight.xcodeproj; path = "../node_modules/react-native-control-flashlight-ios/RNControlFlashlight.xcodeproj"; sourceTree = "<group>"; };
+		21E7B46B1F2B167300CCEEAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		21E7B46D1F2B241400CCEEAA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2697136C3DE24FE6AFBF06FB /* RCTContacts.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTContacts.xcodeproj; path = "../node_modules/react-native-contacts/ios/RCTContacts.xcodeproj"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* RedPager-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RedPager-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* RedPager-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RedPager-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -376,6 +384,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21858BD71F2C27C7009DC32F /* libRNControlFlashlight.a in Frameworks */,
 				2142B5841F1F417700309520 /* libPayPalMobile.a in Frameworks */,
 				215525441F1478BF00E8165A /* CoreFoundation.framework in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -383,13 +392,13 @@
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
+				21E7B46E1F2B241400CCEEAA /* AudioToolbox.framework in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				092744631721474892EB5F03 /* libWorkers.a in Frameworks */,
 				AD952AC9DF70460FAE628DF8 /* libRNFIRMessaging.a in Frameworks */,
 				529BAD72EA2375736EE539A0 /* libPods-RedPager.a in Frameworks */,
 				60C5BBCFA4DD45DAAC527D11 /* libRNSound.a in Frameworks */,
@@ -526,7 +535,7 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				215525411F146D0D00E8165A /* GoogleService-Info.plist */,
+				21E7B46B1F2B167300CCEEAA /* GoogleService-Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				2142B55D1F1F3DC500309520 /* CardIO */,
 				2142B55E1F1F3DC500309520 /* PayPalMobile */,
@@ -570,6 +579,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		21858BCF1F2C27A0009DC32F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				21858BD41F2C27A0009DC32F /* libRNControlFlashlight.a */,
+				21858BD61F2C27A0009DC32F /* RNControlFlashlightTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2198F7711F1F576A00170775 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -590,6 +608,7 @@
 		5472AD50DFB9A8BE835BF456 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				21E7B46D1F2B241400CCEEAA /* AudioToolbox.framework */,
 				2142B5831F1F417700309520 /* libPayPalMobile.a */,
 				215525431F1478BF00E8165A /* CoreFoundation.framework */,
 				41006E0F5F6350E5F56A852C /* libPods-RedPager.a */,
@@ -618,6 +637,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				21858BCE1F2C27A0009DC32F /* RNControlFlashlight.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -629,7 +649,6 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				0D3E52D2CA594EBEA5BEB7E1 /* Workers.xcodeproj */,
 				C635A56764754CACB2DC5DFE /* RNFIRMessaging.xcodeproj */,
 				5800E1F38FD24C8399B7E4F3 /* RNSound.xcodeproj */,
 				3C5B1554BD3C497BAD9A60F5 /* RNVectorIcons.xcodeproj */,
@@ -671,14 +690,6 @@
 				00E356EE1AD99517003FC87E /* RedPagerTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* RedPager-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* RedPager-tvOSTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		84EDDE0D1F0B72270055BE9B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				84EDDE301F0B72270055BE9B /* libWorkers.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -780,16 +791,20 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 88JP8HVQJV;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = CPK26Z4248;
+						DevelopmentTeam = 88JP8HVQJV;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -865,6 +880,10 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
+					ProductGroup = 21858BCF1F2C27A0009DC32F /* Products */;
+					ProjectRef = 21858BCE1F2C27A0009DC32F /* RNControlFlashlight.xcodeproj */;
+				},
+				{
 					ProductGroup = 84EDDE311F0B72270055BE9B /* Products */;
 					ProjectRef = C635A56764754CACB2DC5DFE /* RNFIRMessaging.xcodeproj */;
 				},
@@ -875,10 +894,6 @@
 				{
 					ProductGroup = 217A217F1F15CE950083A1BC /* Products */;
 					ProjectRef = 3C5B1554BD3C497BAD9A60F5 /* RNVectorIcons.xcodeproj */;
-				},
-				{
-					ProductGroup = 84EDDE0D1F0B72270055BE9B /* Products */;
-					ProjectRef = 0D3E52D2CA594EBEA5BEB7E1 /* Workers.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -960,6 +975,20 @@
 			fileType = archive.ar;
 			path = libRNVectorIcons.a;
 			remoteRef = 217A219F1F15CE950083A1BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		21858BD41F2C27A0009DC32F /* libRNControlFlashlight.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNControlFlashlight.a;
+			remoteRef = 21858BD31F2C27A0009DC32F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		21858BD61F2C27A0009DC32F /* RNControlFlashlightTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RNControlFlashlightTests.xctest;
+			remoteRef = 21858BD51F2C27A0009DC32F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2198F7781F1F576A00170775 /* libRCTContacts.a */ = {
@@ -1102,13 +1131,6 @@
 			remoteRef = 84EDDE2C1F0B72270055BE9B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		84EDDE301F0B72270055BE9B /* libWorkers.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libWorkers.a;
-			remoteRef = 84EDDE2F1F0B72270055BE9B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		84EDDE351F0B72270055BE9B /* libRNFIRMessaging.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1132,7 +1154,6 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				2108D5121F0F7C8D003FD4C8 /* advertising.mp3 in Resources */,
-				215525421F146D0D00E8165A /* GoogleService-Info.plist in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				215525401F146A4900E8165A /* OMFG-Hello-OMFG.mp3 in Resources */,
 				DEA3B87FA4894E9DB545546C /* Entypo.ttf in Resources */,
@@ -1142,6 +1163,7 @@
 				0BD681F20A3C4FA5834C4118 /* Foundation.ttf in Resources */,
 				883DDDD2EA3E4E4C9B5104EB /* Ionicons.ttf in Resources */,
 				F0736F071D3F49C0868E1DD7 /* MaterialCommunityIcons.ttf in Resources */,
+				21E7B46C1F2B167300CCEEAA /* GoogleService-Info.plist in Resources */,
 				9A79E7CCC3E04CBCAFCA88B6 /* MaterialIcons.ttf in Resources */,
 				97576B60D9224341B2A5BDFA /* Octicons.ttf in Resources */,
 				D12B8360BA964B2DA7ECC8B4 /* SimpleLineIcons.ttf in Resources */,
@@ -1311,6 +1333,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 88JP8HVQJV;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1349,6 +1372,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 88JP8HVQJV;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-workers/ios/Workers",
@@ -1383,15 +1407,15 @@
 			baseConfigurationReference = 55A45C53C003E1DA38EA5FBC /* Pods-RedPager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RedPager/RedPager.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = CPK26Z4248;
+				DEVELOPMENT_TEAM = 88JP8HVQJV;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-paypal/**",
-					"$(SRCROOT)/../node_modules/react-native-workers/ios/Workers",
-					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
+					"$(SRCROOT)/../node_modules/react-native-fcm/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-contacts/ios/RCTContacts",
@@ -1400,19 +1424,17 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
+					"$(SRCROOT)/Libraries/**",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-paypal/**",
-					"$(SRCROOT)/Libraries/**",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/Protobuf\"",
+					"$(inherited)",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.RedPager2510;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.RedPager2511;
 				PRODUCT_NAME = RedPager;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1423,14 +1445,14 @@
 			baseConfigurationReference = 4663148DDB9FD706AB071EFF /* Pods-RedPager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RedPager/RedPager.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CPK26Z4248;
+				DEVELOPMENT_TEAM = 88JP8HVQJV;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-paypal/**",
-					"$(SRCROOT)/../node_modules/react-native-workers/ios/Workers",
-					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
+					"$(SRCROOT)/../node_modules/react-native-fcm/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-contacts/ios/RCTContacts",
@@ -1439,19 +1461,17 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
+					"$(SRCROOT)/Libraries/**",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-paypal/**",
-					"$(SRCROOT)/Libraries/**",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/Protobuf\"",
+					"$(inherited)",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.RedPager2510;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.RedPager2511;
 				PRODUCT_NAME = RedPager;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

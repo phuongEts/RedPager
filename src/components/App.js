@@ -4,6 +4,7 @@ import { Platform, Vibration, NativeModules } from 'react-native';
 import { Provider } from 'react-redux';
 //import { Worker } from 'react-native-workers';
 import Sound from 'react-native-sound';
+//import PushNotification from 'react-native-push-notification';
 import FCM, {FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType} from 'react-native-fcm';
 const { RNControlFlashlight } = NativeModules;
 
@@ -18,15 +19,14 @@ class App extends Component {
             // fcm token may not be available on first load, catch it here
         });
 
-        Sound.setCategory('playback');
-
         FCM.requestPermissions();
         FCM.getFCMToken().then(token => {
             console.log('TOKEN (getFCMToken)', token);
         });
-
-        FCM.on(FCMEvent.Notification, async (notif) => {
+        this.notificationListener = FCM.on(FCMEvent.Notification, async (notif) => {
             console.log('notif (notif)', notif);
+            //this.eachAlert();
+            /*
             const mySound = new Sound('OMFG-Hello-OMFG.mp3', Sound.MAIN_BUNDLE, (e) => {
                 if (e) {
                 //console.log('error', e);
@@ -35,6 +35,7 @@ class App extends Component {
                 mySound.play();
                 }
             });
+            Vibration.vibrate([0, 500, 200, 500]);
             RNControlFlashlight.turnFlashlight(
                 "flashlightOn", // flashlightOn, flashlightOff
 
@@ -73,9 +74,52 @@ class App extends Component {
                     break;
                 }
             }
+
+        */
         });
     }
+    eachAlert() {
+        function alertFunc() {
+            Sound.setCategory('playback');
+            const mySound = new Sound('OMFG-Hello-OMFG.mp3', Sound.MAIN_BUNDLE, (e) => {
+                if (e) {
+                //console.log('error', e);
+                } else {
+                //console.log('duration', mySound.getDuration());
+                mySound.play();
+                }
+            });
+            function vibrateFunc() {
+                Vibration.vibrate([0, 500, 200, 500]);
+                RNControlFlashlight.turnFlashlight(
+                    "flashlightOn", // flashlightOn, flashlightOff
 
+                    function errorCallback(results) {
+                        console.log('JS Error: ' + results['errMsg']);
+                    },
+
+                    function successCallback(results) {
+                        console.log('JS Success: ' + results['successMsg']);
+                    }
+                );
+            }
+
+            RNControlFlashlight.turnFlashlight(
+                "flashlightOff", // flashlightOn, flashlightOff
+
+                function errorCallback(results) {
+                    console.log('JS Error: ' + results['errMsg']);
+                },
+
+                function successCallback(results) {
+                    console.log('JS Success: ' + results['successMsg']);
+                }
+            );
+
+            setInterval(vibrateFunc, 2000);
+        }
+        setInterval(alertFunc, 60 * 1000 * 2);
+    }
     render() {
         return (
             <Provider store={store} >

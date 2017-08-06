@@ -35,12 +35,16 @@ class Login extends Component {
             username: '',
             password: '',
             tokenDevice: null,
+            nom: 'name'
         };
     }
     componentDidMount() {
         FCM.getFCMToken().then(token => {
             this.setState({ tokenDevice: token });
         });
+    }
+    myFnct(){
+        Alert.alert( 'alert',this.state.nom);
     }
     loginProcess() {
         this.props.dispatch({ type: 'LOADING' });
@@ -184,6 +188,11 @@ class Login extends Component {
                         </View>
                         <View style={{ marginTop: 20 }}>
                             <TouchableOpacity onPress={this.forgotPass.bind(this)}>
+                                <Text>Forgot your password?</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ marginTop: 20 }}>
+                            <TouchableOpacity onPress={this.myFnct.bind(this)}>
                                 <Text>Forgot your password?</Text>
                             </TouchableOpacity>
                         </View>

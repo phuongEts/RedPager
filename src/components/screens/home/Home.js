@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
-    View, Text, TouchableOpacity, ScrollView, Image, Switch, Modal, AsyncStorage, Vibration
+    View, Text, TouchableOpacity, ScrollView, Image, Switch, Modal, AsyncStorage, Vibration,
+    NativeModules
 } from 'react-native';
 
 import { connect } from 'react-redux';
@@ -16,6 +17,8 @@ import ModalStyle from '../../assets/styles/ModalStyle';
 import Loading from '../main/Loading';
 import SendStyle from '../../assets/styles/SendStyle';
 
+import Sound from 'react-native-sound';
+const { RNControlFlashlight } = NativeModules;
 const { touchBtnMenu, buttonMenu } = Styles;
 
 class Home extends Component {
@@ -57,6 +60,55 @@ class Home extends Component {
             });
         }
 
+    }
+    onSound() {
+        Sound.setCategory('playback');
+        const mySound = new Sound('OMFG-Hello-OMFG.mp3', Sound.MAIN_BUNDLE, (e) => {
+            if (e) {
+            //console.log('error', e);
+            } else {
+            //console.log('duration', mySound.getDuration());
+            mySound.play();
+            }
+        });
+    }
+    onVabration() {
+        Vibration.vibrate([0, 500, 200, 500]);
+    }
+    onFlashlight() {
+        RNControlFlashlight.turnFlashlight(
+            "flashlightOn", // flashlightOn, flashlightOff
+
+            function errorCallback(results) {
+                console.log('JS Error: ' + results['errMsg']);
+            },
+
+            function successCallback(results) {
+                console.log('JS Success: ' + results['successMsg']);
+            }
+        );
+
+        RNControlFlashlight.turnFlashlight(
+            "flashlightOff", // flashlightOn, flashlightOff
+
+            function errorCallback(results) {
+                console.log('JS Error: ' + results['errMsg']);
+            },
+
+            function successCallback(results) {
+                console.log('JS Success: ' + results['successMsg']);
+            }
+        );
+    }
+    eachAlert() {
+        this.onSound();
+        this.onFlashlight();
+        this.onVabration();
+        setInterval(this.onFlashlight(), 2000);
+        /*
+        setInterval(this.onFlashlight(), 2000);
+        setInterval(this.onSound(), 4000);
+        */
     }
     sendPage(id) {
         const { currentUser } = this.props;
@@ -227,10 +279,7 @@ class Home extends Component {
                     </View>
                 </View>
                 <View style={sendContainer}>
-                    <TouchableOpacity 
-                        //onPress={this.openListSend.bind(this)}
-                        onPress={() => Vibration.vibrate([0, 5000, 200, 0])}
-                    >
+                    <TouchableOpacity onPress={this.eachAlert.bind(this)}>
                         <Image style={sendBtnImg} source={bgBtnSendMenu}>
                             <Text style={textSendBtn}>Send Red Page</Text>
                         </Image>

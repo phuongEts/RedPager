@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { 
-  View, Text, TouchableOpacity, ScrollView, NativeModules
+  View, Text, TouchableOpacity, ScrollView, NativeModules, Alert
 } from 'react-native';
 import { connect } from 'react-redux';
 import RadioForm from 'react-native-simple-radio-button';
@@ -12,6 +12,7 @@ import AccountStyle from '../../assets/styles/AccountStyle';
 import Init from '../../assets/Init';
 import Fetch from '../../api/Fetch';
 import Loading from '../main/Loading';
+import Logout from '../main/Logout';
 
 const MFLReactNativePayPal = NativeModules.MFLReactNativePayPal;
 
@@ -136,6 +137,46 @@ class Account extends Component {
       });
     }
   }
+  deleteUser() {
+    Alert.alert(
+        'Delete User',
+        'are you want delete user?',
+        [
+          { text: 'OK', onPress: () => this.deleteUserHandle() },
+          { text: 'cancel', onPress: () => console.log('cancel') },
+        ]
+    );
+  }
+  deleteUserHandle() {
+    const { currentUser } = this.props;
+    const value = {
+      Action: 'deleteUser',
+      idUser: currentUser.idUser,
+    };
+    Fetch(value)
+    .then((response) => response.json())
+    .then((responseJson) => {
+      if (responseJson) { // ok
+        Toast.show(responseJson.mess, {
+          duration: 1000,
+          position: Toast.positions.BOTTOM,
+          shadow: true,
+          animation: true,
+          hideOnPress: true,
+          delay: 0
+        });
+        if (responseJson.code === 1) {
+          Logout().then(() => {
+              this.props.dispatch({ type: 'SET_TOGGLE_APP', isOn: false });
+              this.props.dispatch({ type: 'LOGOUT' });
+          })
+        }
+      }
+    })
+    .catch(error => {
+        console.log(error);
+    });
+  }
   render() {
     const { 
       container, label, line, purcharContainer, title, textStyle, formPuschase, 
@@ -194,7 +235,7 @@ class Account extends Component {
           <View style={formPuschase}>
             <Text>Do you want to delete your account?</Text>
             <View style={buyContainer}>
-              <TouchableOpacity style={buyBtn} onPress={this.payProcess.bind(this)}>
+              <TouchableOpacity style={buyBtn} onPress={this.deleteUser.bind(this)}>
                 <Text style={buyText}>Delete</Text>
               </TouchableOpacity>
             </View>
